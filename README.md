@@ -17,7 +17,7 @@ Each finding includes a severity, explanation, and suggested fix. Demo mode retu
 
 ## Stack
 
-- Frontend: React 19, TypeScript 7, Vite 8
+- Frontend: React 19, TypeScript 5.8.3, Vite 8
 - Backend: Python 3.12.8, FastAPI, Pydantic
 - Tests: pytest
 
