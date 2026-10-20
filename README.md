@@ -1,5 +1,7 @@
 # RepoRescue AI
 
+Autonomous GitHub Repository Doctor
+
 RepoRescue AI is a GitHub Repository Doctor: paste a public GitHub repository URL and get a practical health report for the maintenance basics that make a codebase easier to run and ship.
 
 ## What it checks
