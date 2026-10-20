@@ -26,7 +26,7 @@ Each finding includes a severity, explanation, and suggested fix. Demo mode retu
 ### Prerequisites
 
 - Python 3.12.8 (the version is pinned in `.python-version`)
-- Node.js compatible with the installed Vite version
+- Node.js 20.19+ or 22.12+ (required by Vite 8)
 - npm
 
 ### Backend
@@ -98,3 +98,30 @@ docker run --rm -p 8000:8000 --env-file .env reporescue-api
 ```
 
 The frontend remains a static Vite build and can be served by a separate static host or web server.
+
+## Beginner deployment plan
+
+RepoRescue AI deploys as two small services:
+
+1. Deploy the FastAPI backend with the included Dockerfile.
+2. Build the frontend and upload `dist/` to a static web host.
+3. Set `VITE_API_BASE_URL` to the public backend URL before running `npm run build`.
+
+Backend deployment with Docker:
+
+```bash
+docker build -t reporescue-api .
+docker run --rm -p 8000:8000 --env-file .env reporescue-api
+```
+
+The backend listens on port `8000` and exposes `GET /health` for a health check. For a hosted deployment, configure the platform to run the same Docker image and expose port `8000`. Keep `GITHUB_TOKEN` in the platform's secret/environment-variable settings; never put a real token in the frontend build.
+
+Frontend deployment:
+
+```bash
+export VITE_API_BASE_URL=https://your-backend.example.com
+npm ci
+npm run build
+```
+
+Upload the resulting `dist/` directory to a static hosting provider. The frontend is not live from this repository by itself; a hosting provider and a public backend URL must be configured separately.
