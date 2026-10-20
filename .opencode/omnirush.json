@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "workspace": {
+    "name": "omnirush.ai",
+    "createdAt": 1792488115326,
+    "preset": "starter"
+  },
+  "authorizedRoots": [
+    "C:\\Users\\USER\\omnirush.ai"
+  ],
+  "reload": null
+}
